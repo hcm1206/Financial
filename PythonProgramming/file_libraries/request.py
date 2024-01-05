@@ -66,7 +66,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
 # 사본 이미지를 mpimg 객체로 불러와 출력(3차원 부동 소수점 데이터로 구성됨)
-dst_img = mpimg.imread('dst.png')
+dst_img = mpimg.imread('src.png')
 print(dst_img)
 
 # 사본 이미지 객체에서 첫 번째 RGB 채널만 불러와 의사 색상 이미지로 저장하여 출력(부동 소수점 데이터가 2차원으로 변경)
