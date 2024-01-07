@@ -94,8 +94,8 @@ class DBUpdater:
             df = pd.DataFrame()
             pages = min(int(lastpage), pages_to_fetch)
             for page in range(1, pages + 1):
-                url = '{}&page={}'.format(url, page)
-                req = requests.get(url, headers={'User-agent': 'Mozilla/5.0'})
+                urlpage = '{}&page={}'.format(url, page)
+                req = requests.get(urlpage, headers={'User-agent': 'Mozilla/5.0'})
                 df = df.append(pd.read_html(req.text, header=0)[0])
                 tmnow = datetime.now().strftime('%Y-%m-%d %H:%M')
                 print('[{}] {} ({}) : {:04d}/{:04d} pages are downloading...'.format(tmnow, company, code, page, pages), end='\r')
@@ -114,9 +114,9 @@ class DBUpdater:
         with self.conn.cursor() as curs:
             for r in df.itertuples():
                 sql = f"REPLACE INTO daily_price VALUES ('{code}', '{r.date}', {r.open}, {r.high}, {r.low}, {r.close}, {r.diff}, {r.volume})"
-            curs.execute(sql)
-        self.conn.commit()
-        print('[{}] #{:04d} {} ({}) : {} rows > REPLACE INTO daily_price [OK]'.format(datetime.now().strftime('%Y-%m-%d %H:%M'), num+1, company, code, len(df)))
+                curs.execute(sql)
+            self.conn.commit()
+            print('[{}] #{:04d} {} ({}) : {} rows > REPLACE INTO daily_price [OK]'.format(datetime.now().strftime('%Y-%m-%d %H:%M'), num+1, company, code, len(df)))
 
     def update_daily_price(self, pages_to_fetch):
         """KRX 상장법인의 주식 시세를 네이버로부터 읽어서 DB에 업데이트"""
