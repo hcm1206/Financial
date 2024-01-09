@@ -22,7 +22,7 @@ mk = Analyzer.MarketDB()
 stocks = ['삼성전자', 'SK하이닉스', '현대자동차', 'NAVER']
 df = pd.DataFrame()
 for s in stocks:
-    df[s] = mk.get_daily_price(s, '2019-01-01', '2023-12-31')['close']
+    df[s] = mk.get_daily_price(s, '2023-01-01', '2023-12-31')['close']
 
 # 연간 변동률과 연간 공분산 계산
 daily_ret = df.pct_change()
