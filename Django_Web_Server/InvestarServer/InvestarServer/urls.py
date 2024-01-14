@@ -18,6 +18,7 @@ from django.contrib import admin
 from hello import views
 from django.urls import path, re_path
 from index import views as index_views
+from balance import views as balance_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +26,6 @@ urlpatterns = [
     re_path(r'^(?P<name>[A-Z][a-z]*)$', views.sayHello),
     # index 애플리케이션 뷰의 main_view() 함수로 매핑하는 URL 처리
     path('index/', index_views.main_view),
+    # balance 애플리케이션 뷰의 main_view() 함수로 매핑하는 URL 처리
+    path('balance/', balance_views.main_view),
 ]

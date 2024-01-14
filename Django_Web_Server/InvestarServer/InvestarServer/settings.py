@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages', # 메시지 처리
     'django.contrib.staticfiles', # 정적 파일 처리
     'hello', # hello 애플리케이션을 추가
-    'index' # index 애플리케이션을 추가
+    'index', # index 애플리케이션을 추가
+    'balance', # balance 애플리케이션을 추가
 ]
 
 MIDDLEWARE = [
